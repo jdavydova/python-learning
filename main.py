@@ -26,3 +26,29 @@ for item in my_list:
 
 print(new_list)
 
+# EXERCISE 2: Working with Dictionaries
+
+employee = {
+  "name": "Tim",
+  "age": 30,
+  "birthday": "1990-03-10",
+  "job": "DevOps Engineer"
+}
+
+# Write a Python Script that:
+
+# Updates the job to Software Engineer
+
+employee["job"] = "Software Engineer"
+print (employee["job"] )
+
+# Removes the age key from the dictionary
+
+# employee.__delitem__('age')
+employee.pop("age")
+print(employee)
+
+# Loops through the dictionary and prints the key:value pairs one by one
+
+for key, value in employee.items():
+    print (f"{key}: {value}")
