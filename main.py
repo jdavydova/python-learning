@@ -1,11 +1,10 @@
-from user import User
-from post import Post
+import requests
 
-app_user_one = User("jd@ja.com", "Juli", "pwd", "DevOps engineer")
-app_user_one.get_user_info()
+response = requests.get("https://gitlab.com/api/v4/users/juliada888/projects")
+print(response.json())
+print(type(response.json()))
 
-app_user_two = User("boby@com", "Robert", "pwd", "Agent")
-app_user_two.get_user_info()
+my_project = response.json()
 
-new_post = Post("You are my sun shine ", app_user_two.name)
-new_post.get_post_info()
+for project in my_project:
+    print(f"Project Name {project['name']}\nProject URL {project['web_url']}")
