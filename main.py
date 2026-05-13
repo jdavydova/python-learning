@@ -52,3 +52,34 @@ print(employee)
 
 for key, value in employee.items():
     print (f"{key}: {value}")
+
+# Using the following 2 dictionaries:
+dict_one = {'a': 100, 'b': 400}
+dict_two = {'x': 300, 'y': 200}
+
+# Write a Python Script that:
+
+# Merges these two Python dictionaries into 1 new dictionary.
+
+merg_dict = {**dict_one, **dict_two}
+print(merg_dict)
+
+# Sums up all the values in the new dictionary and prints it out
+
+sums_of_dict = 0
+for key, value in merg_dict.items():
+    sums_of_dict += value
+
+print(sums_of_dict)
+
+# Prints the max and minimum values of the dictionary
+merg_values = []
+for key, value in merg_dict.items():
+    merg_values.append(value)
+print(merg_values)
+
+merg_values.sort()
+print(merg_values)
+
+print(f"min value: {merg_values[0]}")
+print(f"max value: {merg_values[-1]}")
