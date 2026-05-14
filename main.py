@@ -1,3 +1,5 @@
+from helper import *
+
 # EXERCISE 1: Working with Lists
 my_list = [1, 2, 2, 4, 4, 5, 6, 8, 10, 13, 22, 35, 52, 83]
 
@@ -121,40 +123,12 @@ print (employees[1]["address"]["country"])
 # EXERCISE 4: Working with Functions
 
 # Write a function that accepts a list of dictionaries with employee age (see example list from Exercise 3) and prints out the name and age of the youngest employee.
-
-def get_youngest (employees):
-    yangest_age = employees[0]["age"]
-    yangest_name = employees[0]["name"]
-    for employee in employees:
-        if yangest_age > employee["age"]:
-            yangest_age = employee["age"]
-            yangest_name = employee["name"]
-    print (f"{yangest_name} is youngest: {yangest_age} years old!")
-
 get_youngest(employees)
 
 # Write a function that accepts a string and calculates the number of upper case letters and lower case letters.
-
-def calculate_case_letters(word):
-    upper_letters = 0
-    lower_letters = 0
-    for letter in word:
-        if letter.isupper():
-            upper_letters += 1
-        elif letter.islower():
-            lower_letters += 1
-    print(f"{upper_letters} upper and {lower_letters} lower")
-
 calculate_case_letters("An Apple a Day keeps the Doctor away")
 
 # Write a function that prints the even numbers from a provided list.
-numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+even_numbers(my_list)
 
-def even_numbers(numbers):
-    even_numbers = []
-    for number in numbers:
-        if number % 2 == 0:
-            even_numbers.append(number)
-    print(even_numbers)
-
-even_numbers(numbers)
+# For cleaner code, declare these functions in its own helper Module and use them in the main.py file
