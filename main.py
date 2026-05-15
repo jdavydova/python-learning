@@ -1,3 +1,5 @@
+from pip._internal import operations
+
 from helper import *
 
 # EXERCISE 1: Working with Lists
@@ -132,3 +134,47 @@ calculate_case_letters("An Apple a Day keeps the Doctor away")
 even_numbers(my_list)
 
 # For cleaner code, declare these functions in its own helper Module and use them in the main.py file
+
+# EXERCISE 5: Python Program 'Calculator'
+# Write a simple calculator program that:
+
+# takes user input of 2 numbers and operation to execute
+# handles the following operations: plus, minus, multiply, divide
+# does proper user validation and give feedback: only numbers allowed
+# Keeps the Calculator program running until the user types “exit”
+# Keeps track of how many calculations the user has taken, and when the user exits the calculator program, prints out the number of calculations the user did
+
+
+def calculator(number_one, number_two, operation):
+    if operation == "plus":
+        return number_one + number_two
+    if operation == "plus":
+        print(number_one + number_two)
+    elif operation == "minus":
+        print(number_one - number_two)
+    elif operation == "multiply":
+        print(number_one * number_two)
+    elif operation == "divide":
+        print(number_one / number_two)
+
+track_counter = 0
+
+while True:
+    number_one = input("Enter a first number: ")
+
+    if number_one == "exit":
+        print(f"Number of calculations is {track_counter}. Goodbye!")
+        break
+
+    number_two = input("Enter a second number: ")
+
+    operation = input("Enter operation: plus, minus, multiply, divide:\n")
+    if not number_one or not number_two:
+        print("Input cannot be empty")
+    elif not (number_one.isnumeric() and  number_two.isnumeric()):
+        print ("The numbers are not valid")
+    elif not (operation == "plus" or operation == "minus" or operation == "multiply" or operation == "divide"):
+        print("The operations are not valid")
+    else:
+        calculator(int(number_one), int(number_two), operation)
+        track_counter += 1
