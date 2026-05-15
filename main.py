@@ -1,3 +1,5 @@
+import random
+
 from pip._internal import operations
 
 from helper import *
@@ -178,3 +180,30 @@ while True:
     else:
         calculator(int(number_one), int(number_two), operation)
         track_counter += 1
+
+# EXERCISE 6: Python Program 'Guessing Game'
+# Write a program that:
+# runs until the user guesses a number (hint: while loop)
+# generates a random number between 1 and 9 (including 1 and 9)
+# asks the user to guess the number
+# then prints a message to the user, whether they guessed too low, too high
+# if the user guesses the number right, print out YOU WON! and exit the program
+# Hint: Use the built-in random module to generate random numbers https://docs.python.org/3/library/random.html
+
+random_number = random.randint(1, 9)
+print(random_number)
+
+while True:
+    try:
+        user_guesss_number = int(input("Enter a guess number between 1 and 9: "))
+    except:
+         print("The number is not valid")
+         continue
+
+    if user_guesss_number == random_number:
+        print("YOU WON!")
+        break
+    elif user_guesss_number > random_number:
+        print("Your guess is too high")
+    elif user_guesss_number < random_number:
+        print("Your guess is too low")
