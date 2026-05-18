@@ -345,5 +345,49 @@ while True:
 
     break
 
+#EXERCISE 9: Working with Spreadsheets
+#Write a program that:
+
+#reads the provided spreadsheet file "employees.xlsx" (see Download section at the bottom) with the following information/columns: "name", "years of experience", "job title", "date of birth"
+#creates a new spreadsheet file "employees_sorted.xlsx" with following info/columns: "name", "years of experience", where the years of experience is sorted in descending order: so the employee name with the most experience in years is on top.
+
+import openpyxl
+
+employees_file = openpyxl.load_workbook("employees.xlsx")
+employees_list = employees_file["Sheet1"]
+
+employees_by_experience = []
+
+for row in employees_list.iter_rows(min_row=2, values_only=True):
+
+    name = row[0]
+    years_of_experience = row[1]
+
+    employees_by_experience.append(
+        [name, years_of_experience]
+    )
+
+# Sort descending
+employees_by_experience.sort(
+    key=lambda employee: employee[1],
+    reverse=True
+)
+
+# Create new workbook
+new_workbook = openpyxl.Workbook()
+
+new_sheet = new_workbook.active
+
+# Add headers
+new_sheet.append(["name", "years of experience"])
+
+# Add sorted employees
+for employee in employees_by_experience:
+    new_sheet.append(employee)
+
+
+# Save new file
+new_workbook.save("sorted_by_experience.xlsx")
+
 
 
