@@ -389,5 +389,27 @@ for employee in employees_by_experience:
 # Save new file
 new_workbook.save("sorted_by_experience.xlsx")
 
+#EXERCISE 10: Working with REST APIs
+#Write a program that:
 
+#connects to GitHub API
+#gets all the public repositories for a specific GitHub user
+#prints the name & URL of every project
 
+import requests
+
+github_user = input("Enter GitHub username: ")
+
+url = f"https://api.github.com/users/{github_user}/repos"
+
+response = requests.get(url)
+
+if response.status_code == 200:
+    repositories = response.json()
+
+    for repo in repositories:
+        print("Project name:", repo["name"])
+        print("Project URL:", repo["html_url"])
+        print()
+else:
+    print("User not found or request failed")
