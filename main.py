@@ -1,4 +1,6 @@
 import random
+from socket import fromfd
+from unittest import result
 
 from pip._internal import operations
 
@@ -207,3 +209,141 @@ while True:
         print("Your guess is too high")
     elif user_guesss_number < random_number:
         print("Your guess is too low")
+
+# EXERCISE 7: Working with Classes and Objects
+
+# Imagine you are working in a university and need to write a program, which handles data of students, professors and lectures. To work with this data you create classes and objects:
+# a) Create a Student class
+#
+# with properties:
+#
+# first name
+# last name
+# age
+# lectures they attend
+# with methods:
+#
+# can print the full name
+# can list the lectures, which the student attends
+# can add new lectures to the lectures list (attend a new lecture)
+# can remove lectures from the lectures list (leave a lecture)
+# b) Create a Professor class
+#
+# with properties:
+#
+# first name
+# last name
+# age
+# subjects they teach
+# with methods:
+#
+# can print the full name
+# can list the subjects they teach
+# can add new subjects to the list
+# can remove subjects from the list
+# c) Create a Lecture class
+#
+# with properties:
+#
+# name
+# max number of students
+# duration
+# list of professors giving this lecture
+# with methods:
+#
+# printing the name and duration of the lecture
+# adding professors to the list of professors giving this lecture
+# d) Bonus task
+#
+# As both students and professors have a first name, last name and age, you think of a cleaner solution:
+#
+# Inheritance allows us to define a class that inherits all the methods and properties from another class.
+#
+# Create a Person class, which is the parent class of Student and Professor classes
+# This Person class has the following properties: "first_name", "last_name" and "age"
+# and following method: "print_name", which can print the full name
+# So you don't need the properties and the method in the other two classes. You can easily inherit these.
+# Change Student and Professor classes to inherit "first_name", "last_name", "age" properties and "print_name" method from the Person class
+from student import Student
+from professor import Professor
+
+student1 = Student(
+    "Bob",
+    "Robertson",
+    30,
+    ["Python", "Math"]
+)
+
+professor1 = Professor(
+    "Tim",
+    "Cook",
+    50,
+    ["DevOps", "Cloud"]
+)
+
+student = Student(
+    "Bob",
+    "Robertson",
+    30,
+    ["Python", "Math"]
+)
+
+professor = Professor(
+    "Tim",
+    "Cook",
+    50,
+    ["DevOps", "Cloud"]
+)
+
+student.print_name()
+student.print_lectures()
+
+professor.print_name()
+professor.print_subjects()
+
+# EXERCISE 8: Working with Dates
+# Write a program that:
+#
+# accepts user's birthday as input
+# and calculates how many days, hours and minutes are remaining till the birthday
+# prints out the result as a message to the user
+
+from datetime import datetime
+
+while True:
+    try:
+        users_birthday = input("Enter a birthday (YYYY-MM-DD): ")
+        birthday = datetime.strptime(users_birthday, "%Y-%m-%d")
+    except ValueError:
+        print("The birthday is not valid")
+        continue
+
+    today = datetime.now()
+
+    birthday_this_year = datetime(
+        today.year,
+        birthday.month,
+        birthday.day
+    )
+
+    if birthday_this_year < today:
+        birthday_this_year = datetime(
+            today.year + 1,
+            birthday.month,
+            birthday.day
+        )
+
+    time_remaining = birthday_this_year - today
+
+    days = time_remaining.days
+    hours = time_remaining.seconds // 3600
+    minutes = (time_remaining.seconds % 3600) // 60
+
+    print(
+        f"There are {days} days, {hours} hours and {minutes} minutes remaining until your birthday!"
+    )
+
+    break
+
+
+
